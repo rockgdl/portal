@@ -1,10 +1,18 @@
 package com.fpiceno.webproduct.dao.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.fpiceno.webproduct.dao.ProductoDao;
+import com.fpiceno.webproduct.dao.sql.ProductoDaoSql;
+import com.fpiceno.webproduct.dto.Producto;
+import com.fpiceno.webproduct.dto.TipoCalidad;
+import com.fpiceno.webproduct.dto.UnidadMedida;
 
 public class ProductoDaoSqlTest {
 
@@ -18,7 +26,17 @@ public class ProductoDaoSqlTest {
 
 	@Test
 	public void testAgrega() {
-		fail("Not yet implemented");
+		
+		Producto producto= new Producto();
+		producto.setFechaAlta(new Date());
+		producto.setFechaModificacion(new Date());
+		producto.setNombre("aguacate");
+		producto.setObservaciones("observaciones");
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.KG);
+		
+		ProductoDao dao=new ProductoDaoSql();
+		dao.Agrega(producto);
 	}
 
 	@Test

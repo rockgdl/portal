@@ -1,9 +1,12 @@
 package com.fpiceno.webproduct.dao.sql;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.fpiceno.webproduct.dao.ProductoDao;
@@ -13,32 +16,46 @@ public class ProductoDaoSql implements ProductoDao {
 
 	@Override
 	public Integer Agrega(Producto producto) {
-		// TODO Auto-generated method stub
-		return null;
+		   Session session=getSession();
+//		   Transaction trans=session.beginTransaction();
+		  Integer id=(Integer) session.save(producto);
+		  return id;
 	}
 
 	@Override
 	public void Actualiza(Producto producto) {
-		// TODO Auto-generated method stub
-
+		   Session session=getSession();
+		   Transaction trans=session.beginTransaction();
+		   session.update(producto);
 	}
 
 	@Override
 	public void Elimina(Integer id) {
-		// TODO Auto-generated method stub
-
+		   Session session=getSession();
+		   Transaction trans=session.beginTransaction();
+		   session.delete(id);
 	}
 
 	@Override
 	public List<Producto> obtenTodos() {
-		// TODO Auto-generated method stub
-		return null;
+//		LOG.debug("REGRESANDO LA LISTA DE COLONIA ");
+		   Session session=getSession();
+		   Transaction trans=session.beginTransaction();
+		Query query=session.createQuery("from Producto");
+		ArrayList<Producto> lista = (ArrayList<Producto>) query.list();
+//		trans.commit();
+		return lista;
 	}
 
 	@Override
 	public Producto obtenById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+//		LOG.info("OBTENER COLONIA POR ID  ");
+		   Session session=getSession();
+		   Transaction trans=session.beginTransaction();
+		   Producto producto=new Producto();
+		producto =  (Producto) session.get(Producto.class, id);
+		trans.commit();
+		return producto;
 	}
 
 	@Override

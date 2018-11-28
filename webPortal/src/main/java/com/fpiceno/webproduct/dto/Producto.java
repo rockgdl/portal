@@ -16,18 +16,20 @@ public class Producto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	@Column (name="codigo")
+	@Column (name="nombre")
 	private String nombre;
-	@Column (name="codigo")
+	@Column (name="fechaAlta")
 	private Date fechaAlta;
-	@Column (name="codigo")
+	@Column (name="fechaModificacion")
 	private Date fechaModificacion;
 	@Enumerated(EnumType.STRING)
 	private TipoCalidad tipoCalidad;
 	@Enumerated(EnumType.STRING)
 	private UnidadMedida unidad;
-	@Column (name="codigo")
+	@Column (name="observaciones")
 	private String observaciones;
+	
+	
 	public Integer getId() {
 		return id;
 	}
