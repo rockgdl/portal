@@ -34,39 +34,94 @@ public class ProductoDaoSqlTest {
 		producto.setObservaciones("observaciones");
 		producto.setTipoCalidad(TipoCalidad.STANDAR);
 		producto.setUnidad(UnidadMedida.KG);
+		producto.setPrecio(10.22);
 		
 		ProductoDao dao=new ProductoDaoSql();
-		dao.Agrega(producto);
+		Integer id=dao.Agrega(producto);
+		System.out.println(producto);
 	}
 
 	@Test
 	public void testActualiza() {
-		fail("Not yet implemented");
+		Producto producto= new Producto();
+		producto.setId(1);
+		producto.setFechaAlta(new Date());
+		producto.setFechaModificacion(new Date());
+		producto.setNombre("aguacate1");
+		producto.setObservaciones("observacione1s");
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.KG);
+		producto.setPrecio(10.22);
+		
+		ProductoDao dao=new ProductoDaoSql();
+		dao.Actualiza(producto);
+		System.out.println(producto);
 	}
 
 	@Test
 	public void testElimina() {
-		fail("Not yet implemented");
+		Producto producto= new Producto();
+		producto.setFechaAlta(new Date());
+		producto.setFechaModificacion(new Date());
+		producto.setNombre("aguacate");
+		producto.setObservaciones("observaciones");
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.KG);
+		producto.setPrecio(10.22);
+		
+		ProductoDao dao=new ProductoDaoSql();
+		Integer id=dao.Agrega(producto);
+		System.out.println(producto);
 	}
 
 	@Test
 	public void testObtenTodos() {
-		fail("Not yet implemented");
-	}
+
+		Producto producto= new Producto();
+		producto.setFechaAlta(new Date());
+		producto.setFechaModificacion(new Date());
+		producto.setNombre("aguacate");
+		producto.setObservaciones("observaciones");
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.KG);
+		producto.setPrecio(10.22);
+		
+		ProductoDao dao=new ProductoDaoSql();
+		Integer id=dao.Agrega(producto);
+		System.out.println(producto);}
 
 	@Test
 	public void testObtenById() {
-		fail("Not yet implemented");
-	}
+
+		Producto producto= new Producto();
+		producto.setFechaAlta(new Date());
+		producto.setFechaModificacion(new Date());
+		producto.setNombre("aguacate");
+		producto.setObservaciones("observaciones");
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.KG);
+		producto.setPrecio(10.22);
+		
+		ProductoDao dao=new ProductoDaoSql();
+		Integer id=dao.Agrega(producto);
+		System.out.println(producto);}
 
 	@Test
 	public void testObtenByName() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testGetSession() {
-		fail("Not yet implemented");
-	}
+		Producto producto= new Producto();
+		producto.setFechaAlta(new Date());
+		producto.setFechaModificacion(new Date());
+		producto.setNombre("aguacate");
+		producto.setObservaciones("observaciones");
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.KG);
+		producto.setPrecio(10.22);
+		
+		ProductoDao dao=new ProductoDaoSql();
+		Integer id=dao.Agrega(producto);
+		System.out.println(producto);}
+
+
 
 }

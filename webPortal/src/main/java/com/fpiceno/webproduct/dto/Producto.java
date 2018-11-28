@@ -28,6 +28,8 @@ public class Producto {
 	private UnidadMedida unidad;
 	@Column (name="observaciones")
 	private String observaciones;
+	@Column (name="precio")
+	private Double precio;
 	
 	
 	public Integer getId() {
@@ -72,6 +74,20 @@ public class Producto {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
-	
+	public Double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", fechaAlta="
+				+ fechaAlta + ", fechaModificacion=" + fechaModificacion
+				+ ", tipoCalidad=" + tipoCalidad + ", unidad=" + unidad
+				+ ", observaciones=" + observaciones + ", precio=" + precio
+				+ "]";
+	}
+
 
 }

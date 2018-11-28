@@ -33,7 +33,6 @@
 		<property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
 		
 		<!-- Enable Hibernate's automatic session context management -->
-		<property name="current_session_context_class">thread</property>
 		<!-- Disable the second-level cache -->
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
@@ -43,7 +42,9 @@
 		<property name="hbm2ddl.auto">update</property>
 		<property name="javax.persistence.validation.mode">none</property>
 		<property name="hibernate.connection.release_mode">after_transaction</property>  
-		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.transaction.coordinator_class">jdbc</property>
+		<property name="hibernate.default_catalog">productos</property>
+		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<property name="hibernate.default_schema">dbo</property>
 <!-- 		hibernate.transaction.factory_class = \ -->
@@ -54,8 +55,6 @@
 <!-- 		<property name=""></property> -->
 	
 		 	<mapping class="com.fpiceno.webproduct.dto.Producto"/>
-	 	
-<!-- 			<mapping class="com.contpaq.facturacion.dto.Relaciones"/> -->
 	
 
 	</session-factory>

@@ -17,16 +17,18 @@ public class ProductoDaoSql implements ProductoDao {
 	@Override
 	public Integer Agrega(Producto producto) {
 		   Session session=getSession();
-//		   Transaction trans=session.beginTransaction();
+		   Transaction tx=session.beginTransaction();
 		  Integer id=(Integer) session.save(producto);
+		  tx.commit();
 		  return id;
 	}
 
 	@Override
 	public void Actualiza(Producto producto) {
 		   Session session=getSession();
-		   Transaction trans=session.beginTransaction();
+		   Transaction tx=session.beginTransaction();
 		   session.update(producto);
+		   tx.commit();
 	}
 
 	@Override
@@ -34,6 +36,7 @@ public class ProductoDaoSql implements ProductoDao {
 		   Session session=getSession();
 		   Transaction trans=session.beginTransaction();
 		   session.delete(id);
+		   trans.commit();
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class ProductoDaoSql implements ProductoDao {
 		   Transaction trans=session.beginTransaction();
 		Query query=session.createQuery("from Producto");
 		ArrayList<Producto> lista = (ArrayList<Producto>) query.list();
-//		trans.commit();
+		trans.commit();
 		return lista;
 	}
 
