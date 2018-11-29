@@ -11,7 +11,7 @@ public interface ProductoDao {
 	
 	public Integer Agrega(Producto producto);
 	public void Actualiza (Producto producto);
-	public void Elimina(Integer id);
+	public void Elimina(Producto producto);
 	public List<Producto>obtenTodos();
 	public Producto obtenById(Integer id);
 	public Producto obtenByName(Producto producto);

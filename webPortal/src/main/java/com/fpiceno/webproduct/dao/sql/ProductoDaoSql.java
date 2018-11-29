@@ -32,10 +32,10 @@ public class ProductoDaoSql implements ProductoDao {
 	}
 
 	@Override
-	public void Elimina(Integer id) {
+	public void Elimina(Producto producto) {
 		   Session session=getSession();
 		   Transaction trans=session.beginTransaction();
-		   session.delete(id);
+		   session.delete(producto);
 		   trans.commit();
 	}
 

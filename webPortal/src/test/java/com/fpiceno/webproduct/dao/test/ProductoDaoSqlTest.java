@@ -1,8 +1,8 @@
 package com.fpiceno.webproduct.dao.test;
 
-import static org.junit.Assert.fail;
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.BeforeClass;
@@ -61,34 +61,28 @@ public class ProductoDaoSqlTest {
 	@Test
 	public void testElimina() {
 		Producto producto= new Producto();
-		producto.setFechaAlta(new Date());
-		producto.setFechaModificacion(new Date());
-		producto.setNombre("aguacate");
-		producto.setObservaciones("observaciones");
-		producto.setTipoCalidad(TipoCalidad.STANDAR);
-		producto.setUnidad(UnidadMedida.KG);
-		producto.setPrecio(10.22);
+		producto.setId(2);
 		
 		ProductoDao dao=new ProductoDaoSql();
-		Integer id=dao.Agrega(producto);
-		System.out.println(producto);
+		dao.Elimina(producto);
+//		System.out.println(producto);
 	}
 
 	@Test
 	public void testObtenTodos() {
 
 		Producto producto= new Producto();
-		producto.setFechaAlta(new Date());
-		producto.setFechaModificacion(new Date());
-		producto.setNombre("aguacate");
-		producto.setObservaciones("observaciones");
-		producto.setTipoCalidad(TipoCalidad.STANDAR);
-		producto.setUnidad(UnidadMedida.KG);
-		producto.setPrecio(10.22);
+		List<Producto> productos=new ArrayList<Producto>();
 		
 		ProductoDao dao=new ProductoDaoSql();
-		Integer id=dao.Agrega(producto);
-		System.out.println(producto);}
+		productos=dao.obtenTodos();
+		
+		for(Producto p:productos)
+		{
+			System.out.println(p);
+		}
+	}
+//		System.out.println(producto);}
 
 	@Test
 	public void testObtenById() {
