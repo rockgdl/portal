@@ -2,15 +2,62 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		">
 		
 
 
 
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/login" access="permitAll" />
+		<security:intercept-url pattern="/justificantes" access="permitAll" />
+		<security:intercept-url pattern="/welcome" access="isAuthenticated()" />
+		<security:intercept-url pattern="/costosProceso" access="permitAll" />
+		<security:intercept-url pattern="/costosProceso/obten" access="permitAll" />
+		<security:intercept-url pattern="/costosProceso/**" access="permitAll" />
+		<security:intercept-url pattern="/costoProceso/**" access="permitAll" />
+		<security:intercept-url pattern="codigoInfo" access="permitAll" />
+		<security:intercept-url pattern="/modificaCon/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/static/**" access="permitAll" />
+		<security:intercept-url pattern="../static/**" access="permitAll" />
+		<security:intercept-url pattern="/res/**" access="permitAll" />
+		<security:intercept-url pattern="/about/**" access="permitAll" />
+		<security:intercept-url pattern="/administracion" access="hasRole('Administrador BPM')" /> 
+		<security:intercept-url pattern="/administracion/usuarios/enviarPassword" access="permitAll" />
+		<security:intercept-url pattern="/obtener/parametrica/obten" access="permitAll" />
+		<security:intercept-url pattern="/obtener/parametrica/obten/parentesco" access="permitAll" />
+		<security:intercept-url pattern="/obtener/parametrica/obten/horario" access="permitAll" />
+		<security:intercept-url pattern="/obtener/parametrica/obten/**" access="permitAll" />
+<!-- 		<security:intercept-url pattern="/obtener/parametrica/obten/planta" access="permitAll" /> -->
+		<security:intercept-url pattern="/obtener/empleado/json" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/kiosko" access="permitAll" />
+		<security:intercept-url pattern="/obtener/empleado/kiosko/json" access="permitAll" />
+		<security:intercept-url pattern="/obtener/empleado/kiosko/img" access="permitAll" />
+		<security:intercept-url pattern="/formulario/save" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/buscar" access="isAuthenticated()" />
+		<security:intercept-url pattern="/procesos/usuarios/getAltaCodigoRegistro" access="permitAll" />
+		<security:intercept-url pattern="/administracion/usuarios/**" access="permitAll" />
+		<security:intercept-url pattern="/administracion/save" access="hasRole('Administrador BPM')" />
+		<security:intercept-url pattern="/OficinaBpm.jsp" access="permitAll" />
+		<security:intercept-url pattern="/Login.jsp" access="permitAll" />
+		<security:intercept-url pattern="/Siniestros.jsp" access="permitAll" />
+		<security:intercept-url pattern="/jsp/AutorizacionCompraUnica.jsp" access="permitAll" />
+		<security:intercept-url pattern="/jsp/**" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/getProvedorCompraUnica" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/getComunicacionOrganizacional" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/actualizaProvedorCompraUnica" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/**" access="permitAll" />
+		<security:intercept-url pattern="/insertar/sap/altaCodigo/**" access="permitAll" />
+		<security:intercept-url pattern="/insertar/sap/altaCodigoNacional" access="permitAll" />
+		<security:intercept-url pattern="/insertar/sap/altaInfo/**" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/realizaAltaCodigo" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/bootstrap" access="permitAll" />
+		<security:intercept-url pattern="/procesos/usuarios/solicitarPrestamo/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/procesos/usuarios/solicitarLibro/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/procesos/usuarios/solicitarMarca/**" access="isAuthenticated()" />
+
 		
 		<security:form-login authentication-failure-url="/login?error=true" login-page="/login" password-parameter="clave" username-parameter="usuario" />
 <!-- 		<security:logout invalidate-session="true" logout-url="/logout"  logout-success-url="/OficinaBpm.jsp"/> -->
@@ -29,12 +76,12 @@
 
 
 
-	<bean id="customAuthenticationProvider"
-		class="com.urrea.urreabpm.configuration.CustomAuthenticationProvider">
-	</bean>
-	<bean id="customUserDetailsService"
-		class="com.urrea.urreabpm.configuration.CustomUserDetailService">
-	</bean>
+<!-- 	<bean id="customAuthenticationProvider" -->
+<!-- 		class="com.urrea.urreabpm.configuration.CustomAuthenticationProvider"> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="customUserDetailsService" -->
+<!-- 		class="com.urrea.urreabpm.configuration.CustomUserDetailService"> -->
+<!-- 	</bean> -->
 
 	<bean id="passwordEncoder"
 		class="org.springframework.security.crypto.password.StandardPasswordEncoder">

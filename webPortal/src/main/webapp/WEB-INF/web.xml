@@ -3,40 +3,37 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<display-name>Spring-Tiles</display-name>
+	<display-name>Spring-Product</display-name>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-
-
-	
-
 	
 <!-- Esta parte es para la configuracion de seguridad , se crea un listener para escuchar al contexto y se le carga el xml donde viene
 definida la seguridad atravez de springSecurity para hacer un logueo exitoso  -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+<!-- 	<listener> -->
+<!-- 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
+<!-- 	</listener> -->
 	
+	
+	<listener>
+   		 <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:com/fpiceno/webproduct/configuracion/security-context.xml
-<!-- 			classpath:com/urrea/urreabpm/configuration/service-context.xml -->
-<!-- 			classpath:com/urrea/urreabpm/configuration/persistence-context.xml -->
-			
+		/WEB-INF/spring/security/spring-security-context.xml
 		</param-value>
 	</context-param>
 	
 	
 <!-- 	Agregue esta linea para inetntar poner al usuario en session con spring para la parte del login  -->
 	<listener>
-  <listener-class>org.springframework.web.context.request.RequestContextListener
- </listener-class>
-</listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener
+	 	</listener-class>
+	</listener>
 	
 	
-		<filter>
+	<filter>
 		<display-name>springSecurityFilterChain</display-name>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -45,7 +42,6 @@ definida la seguridad atravez de springSecurity para hacer un logueo exitoso  --
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 			<url-pattern>/*</url-pattern>
-<!-- 			<url-pattern>/*</url-pattern> -->
 	</filter-mapping>
 	
 	<session-config>
